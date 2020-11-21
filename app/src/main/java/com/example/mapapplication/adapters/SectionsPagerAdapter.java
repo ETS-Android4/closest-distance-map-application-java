@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.mapapplication.R;
+import com.example.mapapplication.fragments.AdresArarFragment;
 import com.example.mapapplication.fragments.PlacesUserFragment;
 
 /**
@@ -30,7 +31,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlacesUserFragment (defined as a static inner class below).
-        return PlacesUserFragment.newInstance(position + 1);
+        if (position == 0){
+            return PlacesUserFragment.newInstance(position + 1);
+        }else {
+            return AdresArarFragment.newInstance("P1", "P2");
+        }
     }
 
     @Nullable

@@ -1,5 +1,6 @@
 package com.example.mapapplication.data;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -59,6 +60,7 @@ public abstract class MyRoomDb extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... Voids) {
+
             mUserDao.insert(new UserEntity("taha.m101@gmail.com", "taha", "123"));
 
             PlaceEntity placeEntity = new PlaceEntity();
@@ -69,7 +71,6 @@ public abstract class MyRoomDb extends RoomDatabase {
             placeEntity.setPosition2(String.valueOf(32.8547));
 
             mPlaceDao.insert(placeEntity);
-
             return null;
         }
     }

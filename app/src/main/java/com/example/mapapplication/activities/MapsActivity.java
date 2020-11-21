@@ -137,15 +137,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 check_icon.setVisibility(View.VISIBLE);
 
                 Clear_All();
-//                if (current_Marker != null){
-//                    current_Marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-//                    current_Marker.remove();
-//                }
 
                 position = mMap.getCameraPosition().target;
                 current_Marker = mMap.addMarker(new MarkerOptions().draggable(true).position(position).title("New Place"));
-//                move_marker = false;
-//                un_updated = true;
             }
         });
 
@@ -195,9 +189,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Move the camera to position
         mMap.moveCamera(CameraUpdateFactory.newLatLng(position));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
-
-//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(
-//                ltlng, 16f);
+//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(ltlng, 16f);
 //        mMap.animateCamera(cameraUpdate);
 
         // Move Maker Simultaneously with screen movement
@@ -215,8 +207,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public boolean onMarkerClick(Marker marker) {
                 if (un_updated){
-//                    add_icon.setVisibility(View.GONE);
-//                    check_icon.setVisibility(View.VISIBLE);
                     marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
                     move_marker = true;
 
@@ -238,8 +228,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
             @Override
             public void onMarkerDragStart(Marker marker) {
-//                add_icon.setVisibility(View.GONE);
-//                check_icon.setVisibility(View.VISIBLE);
                 if (current_Marker != null && !current_Marker.getId().equals(marker.getId())) {
                     current_Marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                 }
@@ -268,7 +256,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         nearest_Place = new RoadDiraction();
 
         List<PlaceEntity> _places = mPlaceViewModel.getUserWithPlacesRoad(user_id).get(0).placeEntities;
-
         if (_places.size() == 0) {
             loadingBar.dismiss();
             return;
@@ -354,17 +341,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng polylineEndLatLng = null;
 
         polylines = new ArrayList<>();
+
         //add route(s) to the map using polyline
         for (int i = 0; i < nearest_Place.getRoad_Points().size(); i++) {
             polyOptions.color(getResources().getColor(R.color.colorPrimary));
             polyOptions.width(7);
 
-//                List<LatLng> points = new ArrayList<LatLng>();
-//                for (int j = 0; j < nearest_Place.getRoad_Points().size(); j++) {
             JsonArray json = (JsonArray) nearest_Place.getRoad_Points().get(i);
             LatLng l = new LatLng(json.get(1).getAsDouble(), json.get(0).getAsDouble());
-//                    points.add(l);
-//                }
 
             polyOptions.addAll(Collections.singleton(l));
             Polyline polyline = mMap.addPolyline(polyOptions);
@@ -524,8 +508,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         position = new LatLng(Double.parseDouble(placeEntity.position1), Double.parseDouble(placeEntity.position2));
-        current_Marker = mMap.addMarker(new MarkerOptions().position(position).title(placeEntity.place_name));
+        current_Marker = mMap.addMarker(new MarkerOptions().position(position).title("placeEntity.place_name.toString()"));
         current_Marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+
         move_marker = true;
         un_updated = false;
 

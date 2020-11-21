@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.example.mapapplication.PermissionRequest;
 import com.example.mapapplication.R;
+import com.example.mapapplication.data.MyRoomDb;
 import com.example.mapapplication.data.user.UserEntity;
 import com.example.mapapplication.data.user.UserViewModel;
 import com.google.android.material.textfield.TextInputLayout;
@@ -54,8 +55,14 @@ public class MainActivity extends AppCompatActivity {
         if (!checkPermission()) {
             requestPermission();
         }
-
         setContentView(R.layout.activity_main);
+//        MyRoomDb.getInstance(this);
+
+        PermissionRequest.checkNetworkConnected(this);
+
+        // Database
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        userViewModel.findUserById((long)0);
 
         loginButton = findViewById(R.id.login_button);
 
@@ -139,19 +146,6 @@ public class MainActivity extends AppCompatActivity {
 
         textInputUsername.getEditText().setText("taha");
         textInputPassword.getEditText().setText("123");
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        PermissionRequest.checkNetworkConnected(this);
-
-        // Database
-        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-
-//        UserEntity u = new UserEntity("taha.m101@gmail.com", "taha1", "123");
-//        SingUpButton(u);
     }
 
     // Check the permission is granted or not
