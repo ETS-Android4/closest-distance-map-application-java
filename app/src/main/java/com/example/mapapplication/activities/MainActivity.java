@@ -56,13 +56,12 @@ public class MainActivity extends AppCompatActivity {
             requestPermission();
         }
         setContentView(R.layout.activity_main);
-//        MyRoomDb.getInstance(this);
 
         PermissionRequest.checkNetworkConnected(this);
 
         // Database
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-        userViewModel.findUserById((long)0);
+        userViewModel.findUserById((long)1);
 
         loginButton = findViewById(R.id.login_button);
 
@@ -146,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
 
         textInputUsername.getEditText().setText("taha");
         textInputPassword.getEditText().setText("123");
+
+        Toast.makeText(getApplicationContext(), "Admin user added Automaticly ", Toast.LENGTH_SHORT).show();
     }
 
     // Check the permission is granted or not

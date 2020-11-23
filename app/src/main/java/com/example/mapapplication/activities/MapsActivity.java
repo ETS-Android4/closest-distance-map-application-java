@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment;
 import androidx.core.view.GravityCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.fragment.app.FragmentActivity;
@@ -25,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.mapapplication.R;
 import com.example.mapapplication.data.road_diraction.RoadDiraction;
+import com.example.mapapplication.fragments.PlacesUserFragment;
 import com.example.mapapplication.retrofit.Api;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -189,8 +191,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Move the camera to position
         mMap.moveCamera(CameraUpdateFactory.newLatLng(position));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
-//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(ltlng, 16f);
-//        mMap.animateCamera(cameraUpdate);
 
         // Move Maker Simultaneously with screen movement
         mMap.setOnCameraMoveListener(new GoogleMap.OnCameraMoveListener() {
@@ -453,7 +453,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     // Delete the place used with sil button
     public void DeletePlace_DeleteButton(View view){
         mPlaceViewModel.delete(current_placeEntity);
-        PlaceEntity s = mPlaceViewModel.findPlaceById(current_placeEntity.getId());
+
+        RecyclerView s = findViewById(R.id.place_recyclerview_list);
+        s.removeAllViews();
 
         CloseThePlaceFragment_IptalButton(view);
 
@@ -497,18 +499,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void Detayi_ButtonOnClick(PlaceEntity placeEntity){
         Konum_ButtonOnClick(placeEntity);
         Open_PlaceFragment(placeEntity.place_name, placeEntity.place_description);
-
         current_placeEntity = placeEntity;
     }
 
     // When click on Konum Goster button for place detail in list places menu
     public void Konum_ButtonOnClick(PlaceEntity placeEntity){
-        if (current_Marker != null){
-            current_Marker.remove();
-        }
+        Clear_All();
 
         position = new LatLng(Double.parseDouble(placeEntity.position1), Double.parseDouble(placeEntity.position2));
-        current_Marker = mMap.addMarker(new MarkerOptions().position(position).title("placeEntity.place_name.toString()"));
+        current_Marker = mMap.addMarker(new MarkerOptions().position(position).title(placeEntity.place_name));
         current_Marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 
         move_marker = true;

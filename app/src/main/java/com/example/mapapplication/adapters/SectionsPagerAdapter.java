@@ -32,7 +32,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlacesUserFragment (defined as a static inner class below).
         if (position == 0){
-            return PlacesUserFragment.newInstance(position + 1);
+            return PlacesUserFragment.newInstance();
         }else {
             return AdresArarFragment.newInstance("P1", "P2");
         }

@@ -144,22 +144,17 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     // Inser new user to Room database
-    private void RegisterNewUser(String email, String username, String password){
+    private void RegisterNewUser(String email, String username, String password) {
         UserEntity userEntity = new UserEntity(email, username, password);
 
         userViewModel.insert(userEntity);
 
         UserEntity u = userViewModel.findUserByUsername(userEntity.username);
-        if (u != null){
-            Toast.makeText(this, "Added the user", Toast.LENGTH_LONG).show();
-            finish();
-        }
-        else {
-            Toast.makeText(this, "Not Added the user", Toast.LENGTH_LONG).show();
-        }
+        Toast.makeText(this, "Added the user", Toast.LENGTH_LONG).show();
+        finish();
     }
 
-    // Check the Username in textInputEmail EditText
+    // Check the Email in textInputEmail EditText
     private boolean validateEmail() {
         String usernameInput = textInputEmail.getEditText().getText().toString().trim();
         if (usernameInput.isEmpty()) {

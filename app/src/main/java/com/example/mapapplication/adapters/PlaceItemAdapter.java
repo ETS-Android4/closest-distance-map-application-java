@@ -54,6 +54,7 @@ public class PlaceItemAdapter extends RecyclerView.Adapter<PlaceItemAdapter.View
                     int index = getAdapterPosition();
                     if (mListener != null && index != RecyclerView.NO_POSITION){
                         mListener.onItemClick(mValues.get(index), view);
+                        notifyDataSetChanged();
                     }
                 }
             });
