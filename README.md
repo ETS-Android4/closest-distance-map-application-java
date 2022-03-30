@@ -10,7 +10,7 @@ Used in this application:
 
 This project used Java language, but there another application as the same but used Kotlin. [Kotlin Project](https://github.com/TahaGitHub/shortest-distance-map-application-kotlin).
 
-You can download and test apk, you will find it in a rar file on repository project. [Apk](https://github.com/TahaGitHub/shortest-distance-map-application-kotlin/blob/master/Map_Application_Kotlin_Taha%20Almpkahel.rar)
+You can download and test apk, you will find it in a rar file on repository project. [Apk](https://github.com/TahaGitHub/shortest-distance-map-application-java/blob/master/Map_Application_Java_Taha%20Almokahel.rar)
 
 ## Deny Permission State
 
