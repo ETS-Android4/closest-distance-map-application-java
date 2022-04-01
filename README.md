@@ -1,6 +1,6 @@
-# Shortest Distance Map Application Java
+# Closest Distance Map Application Java
 
-Developed this application to find the shortest road between two points. Addition for that, adding or removing or changing any point from the points. Finally, storing the data added or changed in local database "Room Database".
+Developed this application to find the closest road between two points. Addition for that, adding or removing or changing any point from the points. Finally, storing the data added or changed in local database "Room Database".
 
 Used in this application:
 - Android Studrio
@@ -8,9 +8,9 @@ Used in this application:
 - Rest Api "Retrofit".
 - Openrouteservice.
 
-This project used Java language, but there another application as the same but used Kotlin. [Kotlin Project](https://github.com/TahaGitHub/shortest-distance-map-application-kotlin).
+This project used Java language, but there another application as the same but used Kotlin. [Kotlin Project](https://github.com/TahaGitHub/closest-distance-map-application-kotlin).
 
-You can download and test apk, you will find it in a rar file on repository project. [Apk](https://github.com/TahaGitHub/shortest-distance-map-application-java/blob/master/Map_Application_Java_Taha%20Almokahel.rar)
+You can download and test apk, you will find it in a rar file on repository project. [Apk](https://github.com/TahaGitHub/closest-distance-map-application-java/blob/master/Map_Application_Java_Taha%20Almokahel.rar)
 
 ## Deny Permission State
 
