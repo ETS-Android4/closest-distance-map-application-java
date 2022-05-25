@@ -1,4 +1,6 @@
-# Closest Distance Map Application Java
+# Closest Distance Map Application Java 
+
+Training Application.
 
 Developed this application to find the closest road between two points. Addition for that, adding or removing or changing any point from the points. Finally, storing the data added or changed in local database "Room Database".
 
